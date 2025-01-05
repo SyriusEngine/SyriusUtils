@@ -71,7 +71,6 @@ if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTS)
     add_dependencies(TestSyriusUtils gtest)
 
     target_link_libraries(TestSyriusUtils GTest::gtest GTest::gtest_main)
-    
 endif ()
 
 

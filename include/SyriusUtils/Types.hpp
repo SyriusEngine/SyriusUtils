@@ -4,20 +4,22 @@
 #include <cstddef>
 #include <memory>
 
-typedef uint8_t u8;
-typedef int8_t i8;
-typedef uint16_t u16;
-typedef int16_t i16;
-typedef uint32_t u32;
-typedef int32_t i32;
-typedef uint64_t u64;
-typedef int64_t i64;
+using u8 = uint8_t;
+using i8 = int8_t;
+using u16 = uint16_t;
+using i16 = int16_t;
+using u32 = uint32_t;
+using i32 = int32_t;
+using u64 = uint64_t;
+using i64 = int64_t;
 
-typedef size_t Size;
-typedef size_t Index;
-typedef u64 Time;
+using Size = std::size_t;
+using Index = std::size_t;
+using Time = std::size_t;
 
 namespace Syrius{
+
+    using UID = u64;
 
     template<typename T>
     using UP = std::unique_ptr<T>;
