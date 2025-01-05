@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 project(SyriusUtils)
 
-set (CMAKE_CXX_STANDARD 17)
-
 include(FetchContent)
 include(SyriusBuildUtils/CMakeUtils.cmake)
 
@@ -12,19 +10,6 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_compile_definitions(SR_DEBUG)
 else()
     message(STATUS "Building in Release Mode")
-endif()
-
-# Pull the build utilities submodule
-if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/SyriusBuildUtils/CMakeUtils.cmake")
-    message(STATUS "Initializing submodule SyriusBuildUtils...")
-    execute_process(COMMAND git submodule update --init --remote --recursive
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-        RESULT_VARIABLE result)
-    if(result)
-        message(FATAL_ERROR "Failed to initialize SyriusBuildUtils!")
-    endif()
-else()
-    message(STATUS "Submodule SyriusBuildUtils already initialized.")
 endif()
 
 set(SYRIUS_UTILS_HEADERS
@@ -48,6 +33,13 @@ set(SYRIUS_UTILS_TEST_SRC
     test/TestTypes.hpp)
 
 add_library(SyriusUtils SHARED ${SYRIUS_UTILS_HEADERS} ${SYRIUS_UTILS_SRC})
+install(TARGETS SyriusUtils
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    )
+install(DIRECTORY ./include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTS)
     # Add GTest
