@@ -43,16 +43,23 @@ add_subdirectory(${GTEST_DIR})
 set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/SyriusUtils.hpp
     include/SyriusUtils/PlatformDetection.hpp
-    include/SyriusUtils/Types.hpp include/SyriusUtils/ResourceView.hpp)
+    include/SyriusUtils/Types.hpp
+    include/SyriusUtils/ResourceView.hpp
+    include/SyriusUtils/SymbolicTypes.hpp
+    include/SyriusUtils/ExportUtils.hpp
+    include/SyriusUtils/DebugMacros.hpp
+    )
 
 set(SYRIUS_UTILS_SRC
-    src/SyriusUtils.cpp)
+    src/SyriusUtils.cpp
+    src/SymbolicTypes.cpp
+    )
 
 set(SYRIUS_UTILS_TEST_SRC
     ${SYRIUS_UTILS_SRC}
     test/TestSyriusUtils.cpp)
 
-add_library(SyriusUtils STATIC ${SYRIUS_UTILS_HEADERS} ${SYRIUS_UTILS_SRC})
+add_library(SyriusUtils SHARED ${SYRIUS_UTILS_HEADERS} ${SYRIUS_UTILS_SRC})
 
 if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTS)
     message(STATUS "Building tests")
