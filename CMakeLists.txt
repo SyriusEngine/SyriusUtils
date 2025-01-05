@@ -27,21 +27,6 @@ else()
     message(STATUS "Submodule SyriusBuildUtils already initialized.")
 endif()
 
-# Add GTest
-set(GTEST_DIR "${CMAKE_CURRENT_LIST_DIR}/Dependencies/gtest")
-if (NOT EXISTS ${GTEST_DIR})
-    message("GTest not found, cloning from git...")
-    execute_process(COMMAND git clone https://github.com/google/googletest ${GTEST_DIR}
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-        RESULT_VARIABLE result)
-    if(result)
-        message(FATAL_ERROR "Failed to download GTest")
-    endif()
-else()
-    message(STATUS "GTest found!")
-endif ()
-add_subdirectory(${GTEST_DIR})
-
 set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/SyriusUtils.hpp
     include/SyriusUtils/PlatformDetection.hpp
@@ -59,11 +44,27 @@ set(SYRIUS_UTILS_SRC
 
 set(SYRIUS_UTILS_TEST_SRC
     ${SYRIUS_UTILS_SRC}
-    test/TestSyriusUtils.cpp)
+    test/TestTypes.cpp
+    test/TestTypes.hpp)
 
 add_library(SyriusUtils SHARED ${SYRIUS_UTILS_HEADERS} ${SYRIUS_UTILS_SRC})
 
 if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTS)
+    # Add GTest
+    set(GTEST_DIR "${CMAKE_CURRENT_LIST_DIR}/Dependencies/gtest")
+    if (NOT EXISTS ${GTEST_DIR})
+        message("GTest not found, cloning from git...")
+        execute_process(COMMAND git clone https://github.com/google/googletest ${GTEST_DIR}
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+            RESULT_VARIABLE result)
+        if(result)
+            message(FATAL_ERROR "Failed to download GTest")
+        endif()
+    else()
+        message(STATUS "GTest found!")
+    endif ()
+    add_subdirectory(${GTEST_DIR})
+
     message(STATUS "Building tests")
 
     add_executable(TestSyriusUtils ${SYRIUS_UTILS_TEST_SRC})
