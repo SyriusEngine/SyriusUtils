@@ -25,6 +25,7 @@ else()
     message(STATUS "Submodule SyriusBuildUtils already initialized.")
 endif()
 
+# Add GTest
 set(GTEST_DIR "${CMAKE_CURRENT_LIST_DIR}/Dependencies/gtest")
 if (NOT EXISTS ${GTEST_DIR})
     message("GTest not found, cloning from git...")
@@ -39,15 +40,17 @@ else()
 endif ()
 add_subdirectory(${GTEST_DIR})
 
-set(SYRIUS_UTILS_HEADER
+set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/SyriusUtils.hpp
-    )
+    include/SyriusUtils/PlatformDetection.hpp
+    include/SyriusUtils/Types.hpp include/SyriusUtils/ResourceView.hpp)
 
 set(SYRIUS_UTILS_SRC
     src/SyriusUtils.cpp)
 
 set(SYRIUS_UTILS_TEST_SRC
-    src/SyriusUtils.cpp)
+    ${SYRIUS_UTILS_SRC}
+    test/TestSyriusUtils.cpp)
 
 add_library(SyriusUtils STATIC ${SYRIUS_UTILS_HEADERS} ${SYRIUS_UTILS_SRC})
 
