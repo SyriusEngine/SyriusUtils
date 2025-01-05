@@ -18,7 +18,7 @@ namespace Syrius{
             case SR_FLOAT32:    return 4;
             case SR_FLOAT64:    return 8;
             default: {
-                SR_CORE_WARNING("Unknown type (%i) given to converter", type);
+                // TODO SR_CORE_WARNING("Unknown type (%i) given to converter", type);
                 return 0;
             }
         }

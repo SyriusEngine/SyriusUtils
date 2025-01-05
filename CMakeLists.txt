@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
 project(SyriusUtils)
 
+set (CMAKE_CXX_STANDARD 17)
+
 include(FetchContent)
 include(SyriusBuildUtils/CMakeUtils.cmake)
 
@@ -47,7 +49,7 @@ set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/ResourceView.hpp
     include/SyriusUtils/SymbolicTypes.hpp
     include/SyriusUtils/ExportUtils.hpp
-    include/SyriusUtils/DebugMacros.hpp
+    include/SyriusUtils/Conditions.hpp
     )
 
 set(SYRIUS_UTILS_SRC
