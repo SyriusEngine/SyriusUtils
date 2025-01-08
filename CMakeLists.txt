@@ -12,6 +12,19 @@ else()
     message(STATUS "Building in Release Mode")
 endif()
 
+# Check if SyriusBuildUtils has been initialized
+if (NOT EXISTS "${CMAKE_CURRENT_LIST_DIR}/SyriusBuildUtils/CMakeUtils.cmake")
+    message("SyriusBuildUtils not found, cloning from git...")
+    execute_process(COMMAND git submodule update --init --recursive
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        RESULT_VARIABLE result)
+    if(result)
+        message(FATAL_ERROR "Failed to download SyriusBuildUtils")
+    endif()
+else()
+    message(STATUS "SyriusBuildUtils found!")
+endif()
+
 set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/SyriusUtils.hpp
     include/SyriusUtils/PlatformDetection.hpp
