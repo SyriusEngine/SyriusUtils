@@ -23,14 +23,6 @@ else()
 endif()
 include(SyriusBuildUtils/CMakeUtils.cmake)
 
-# check build type
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    message(STATUS "Building in Debug Mode")
-    add_compile_definitions(SR_DEBUG)
-else()
-    message(STATUS "Building in Release Mode")
-endif()
-
 set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/SyriusUtils.hpp
     include/SyriusUtils/PlatformDetection.hpp
