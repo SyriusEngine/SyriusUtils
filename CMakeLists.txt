@@ -6,7 +6,7 @@ include(FetchContent)
 # Check if SyriusBuildUtils has been initialized
 if (NOT EXISTS "${CMAKE_CURRENT_LIST_DIR}/SyriusBuildUtils/CMakeUtils.cmake")
     message("SyriusBuildUtils not found, cloning from git...")
-    execute_process(COMMAND git submodule update --init --recursive
+    execute_process(COMMAND git submodule init && git submodule update
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
         RESULT_VARIABLE result)
     if(result)
