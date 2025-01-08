@@ -6,11 +6,17 @@ include(FetchContent)
 # Check if SyriusBuildUtils has been initialized
 if (NOT EXISTS "${CMAKE_CURRENT_LIST_DIR}/SyriusBuildUtils/CMakeUtils.cmake")
     message("SyriusBuildUtils not found, cloning from git...")
-    execute_process(COMMAND git submodule init && git submodule update
+    execute_process(COMMAND git submodule init
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-        RESULT_VARIABLE result)
-    if(result)
-        message(FATAL_ERROR "Failed to download SyriusBuildUtils")
+        RESULT_VARIABLE INIT_RESULT)
+    if(INIT_RESULT)
+        message(FATAL_ERROR "Failed to init SyriusBuildUtils")
+    endif()
+    execute_process(COMMAND git submodule update
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        RESULT_VARIABLE UPDATE_RESULT)
+    if(UPDATE_RESULT)
+        message(FATAL_ERROR "Failed to update SyriusBuildUtils")
     endif()
 else()
     message(STATUS "SyriusBuildUtils found!")
@@ -33,12 +39,12 @@ set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/SymbolicTypes.hpp
     include/SyriusUtils/ExportUtils.hpp
     include/SyriusUtils/Conditions.hpp
-    )
+)
 
 set(SYRIUS_UTILS_SRC
     src/SyriusUtils.cpp
     src/SymbolicTypes.cpp
-    )
+)
 
 set(SYRIUS_UTILS_TEST_SRC
     ${SYRIUS_UTILS_SRC}
@@ -46,13 +52,6 @@ set(SYRIUS_UTILS_TEST_SRC
     test/TestTypes.hpp)
 
 add_library(SyriusUtils SHARED ${SYRIUS_UTILS_HEADERS} ${SYRIUS_UTILS_SRC})
-install(TARGETS SyriusUtils
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-    )
-install(DIRECTORY ./include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTS)
     # Add GTest
