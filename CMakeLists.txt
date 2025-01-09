@@ -44,6 +44,7 @@ set(SYRIUS_UTILS_TEST_SRC
     test/TestTypes.hpp)
 
 add_library(SyriusUtils SHARED ${SYRIUS_UTILS_HEADERS} ${SYRIUS_UTILS_SRC})
+target_include_directories(SyriusUtils PUBLIC include)
 
 if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTS)
     # Add GTest
