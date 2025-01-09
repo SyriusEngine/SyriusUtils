@@ -2,8 +2,13 @@
 
 #include "PlatformDetection.hpp"
 #include "Types.hpp"
+#include "SymbolicTypes.hpp"
 #include "ResourceView.hpp"
 #include "ExportUtils.hpp"
+
+#include "Logger/LoggerDefs.hpp"
+#include "Logger/Logger.hpp"
+#include "Logger/LoggerMacros.hpp"
 
 namespace Syrius{
 

@@ -13,13 +13,15 @@ using i32 = int32_t;
 using u64 = uint64_t;
 using i64 = int64_t;
 
+using UByte = unsigned char;
+using SByte = char;
+
 using Size = std::size_t;
 using Index = std::size_t;
 using Time = std::size_t;
+using UID = u64;
 
 namespace Syrius{
-
-    using UID = u64;
 
     template<typename T>
     using UP = std::unique_ptr<T>;

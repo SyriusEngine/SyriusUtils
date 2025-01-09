@@ -31,17 +31,21 @@ set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/SymbolicTypes.hpp
     include/SyriusUtils/ExportUtils.hpp
     include/SyriusUtils/Conditions.hpp
-)
+    include/SyriusUtils/Logger/Logger.hpp
+    include/SyriusUtils/Logger/LoggerDefs.hpp include/SyriusUtils/Logger/LoggerMacros.hpp)
 
 set(SYRIUS_UTILS_SRC
     src/SyriusUtils.cpp
     src/SymbolicTypes.cpp
-)
+    src/Logger/Logger.cpp
+    src/Logger/LoggerDefs.cpp)
 
 set(SYRIUS_UTILS_TEST_SRC
     ${SYRIUS_UTILS_SRC}
     test/TestTypes.cpp
-    test/TestTypes.hpp)
+    test/TestTypes.hpp
+    test/Logger/TestLogger.cpp
+    )
 
 add_library(SyriusUtils SHARED ${SYRIUS_UTILS_HEADERS} ${SYRIUS_UTILS_SRC})
 target_include_directories(SyriusUtils PUBLIC include)
