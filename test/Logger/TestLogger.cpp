@@ -1,5 +1,5 @@
 #include "TestLogger.hpp"
-#include "../../include/SyriusUtils/Logger/Logger.hpp"
+#include "../../include/SyriusUtils/Logger/LoggerMacros.hpp"
 
 using namespace Syrius;
 

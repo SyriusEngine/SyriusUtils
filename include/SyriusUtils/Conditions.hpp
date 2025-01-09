@@ -18,9 +18,6 @@ namespace Syrius::Priv {
         fflush(stdout); // print message BEFORE program halts
         std::abort();
     }
-
-    template <typename... Args>
-    constexpr bool hasVariadicArgs(Args&&...) { return sizeof...(Args) > 0; }
 }
 
 #if defined(SR_DEBUG)

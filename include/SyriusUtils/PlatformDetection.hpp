@@ -39,5 +39,11 @@
 #define SR_LINE __LINE__
 #define SR_FUNC __FUNCTION__
 
+namespace Syrius::Priv{
+
+    template <typename... Args>
+    constexpr bool hasVariadicArgs(Args&&...) { return sizeof...(Args) > 0; }
+}
+
 
 
