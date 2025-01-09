@@ -2,13 +2,7 @@
 
 #include "Logger.hpp"
 
-#define SR_LOG(severity, source, message, ...) \
-    if constexpr(Syrius::Priv::hasVariadicArgs(__VA_ARGS__)){ \
-        Syrius::Logger::log(severity, source, message, SR_FUNC, SR_FILE, SR_LINE, ##__VA_ARGS__); \
-    } \
-    else{ \
-        Syrius::Logger::log(severity, source,  "%s", SR_FUNC, SR_FILE, SR_LINE, message); \
-    }
+#define SR_LOG(severity, source, message, ...) Syrius::Logger::log(severity, source, message, SR_FUNC, SR_FILE, SR_LINE, ##__VA_ARGS__);
 
 #define SR_LOG_INFO(source, message, ...) SR_LOG(SR_MESSAGE_SEVERITY_INFO, source, message, ##__VA_ARGS__)
 #define SR_LOG_WARNING(source, message, ...) SR_LOG(SR_MESSAGE_SEVERITY_MEDIUM, source, message, ##__VA_ARGS__)

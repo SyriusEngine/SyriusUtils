@@ -22,15 +22,7 @@ namespace Syrius::Priv {
 
 #if defined(SR_DEBUG)
 
-    #define SR_ASSERT(condition, msg, ...)                                                              \
-        if (!(condition)) {                                                                             \
-            if (Syrius::Priv::hasVariadicArgs(__VA_ARGS__)){                                            \
-                Syrius::Priv::formatAssert(#condition, SR_FILE, SR_FUNC, SR_LINE, msg, ##__VA_ARGS__);  \
-            }                                                                                           \
-            else{                                                                                       \
-                Syrius::Priv::formatAssert(#condition, SR_FILE, SR_FUNC, SR_LINE, "%s", msg);           \
-            }                                                                                           \
-        }
+    #define SR_ASSERT(condition, msg, ...) Syrius::Priv::formatAssert(#condition, SR_FILE, SR_FUNC, SR_LINE, msg, ##__VA_ARGS__);
 
     #define SR_PRECONDITION(condition, msg, ...) SR_ASSERT(condition, msg, ##__VA_ARGS__)
     #define SR_POSTCONDITION(condition, msg, ...) SR_ASSERT(condition, msg, ##__VA_ARGS__)

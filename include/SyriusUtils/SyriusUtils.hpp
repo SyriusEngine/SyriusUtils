@@ -5,6 +5,7 @@
 #include "SymbolicTypes.hpp"
 #include "ResourceView.hpp"
 #include "ExportUtils.hpp"
+#include "Conditions.hpp"
 
 #include "Logger/LoggerDefs.hpp"
 #include "Logger/Logger.hpp"
