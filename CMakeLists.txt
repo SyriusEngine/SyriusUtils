@@ -26,26 +26,36 @@ include(SyriusBuildUtils/CMakeUtils.cmake)
 set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/SyriusUtils.hpp
     include/SyriusUtils/PlatformDetection.hpp
-    include/SyriusUtils/Types.hpp
     include/SyriusUtils/ResourceView.hpp
-    include/SyriusUtils/SymbolicTypes.hpp
     include/SyriusUtils/ExportUtils.hpp
     include/SyriusUtils/Conditions.hpp
+
+    include/SyriusUtils/Types/Types.hpp
+    include/SyriusUtils/Types/SymbolicTypes.hpp
+
     include/SyriusUtils/Logger/Logger.hpp
-    include/SyriusUtils/Logger/LoggerDefs.hpp include/SyriusUtils/Logger/LoggerMacros.hpp)
+    include/SyriusUtils/Logger/LoggerDefs.hpp
+    include/SyriusUtils/Logger/LoggerMacros.hpp
+    include/SyriusUtils/Random.hpp
+)
 
 set(SYRIUS_UTILS_SRC
     src/SyriusUtils.cpp
-    src/SymbolicTypes.cpp
+
+    src/Types/SymbolicTypes.cpp
+
     src/Logger/Logger.cpp
-    src/Logger/LoggerDefs.cpp)
+    src/Logger/LoggerDefs.cpp
+    src/Random.cpp)
 
 set(SYRIUS_UTILS_TEST_SRC
     ${SYRIUS_UTILS_SRC}
     test/TestTypes.cpp
     test/TestTypes.hpp
     test/Logger/TestLogger.cpp
-    )
+    test/TestRandom.cpp
+    test/TestRandom.hpp
+)
 
 add_library(SyriusUtils SHARED ${SYRIUS_UTILS_HEADERS} ${SYRIUS_UTILS_SRC})
 target_include_directories(SyriusUtils PUBLIC include)

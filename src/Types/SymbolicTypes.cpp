@@ -1,4 +1,4 @@
-#include "../include/SyriusUtils/SymbolicTypes.hpp"
+#include "../../include/SyriusUtils/Types/SymbolicTypes.hpp"
 
 namespace Syrius{
 

@@ -1,5 +1,5 @@
 #include "TestTypes.hpp"
-#include "../include/SyriusUtils/SymbolicTypes.hpp"
+#include "../include/SyriusUtils/Types/SymbolicTypes.hpp"
 
 using namespace Syrius;
 
