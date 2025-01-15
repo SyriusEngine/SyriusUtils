@@ -62,7 +62,7 @@ target_include_directories(SyriusUtils PUBLIC include)
 
 if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTS)
     # Add GTest
-    FETCH_GTEST()
+    fetch_gtest()
 
     message(STATUS "Building tests")
 
