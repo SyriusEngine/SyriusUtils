@@ -23,6 +23,8 @@ else()
 endif()
 include(SyriusBuildUtils/CMakeUtils.cmake)
 
+set(CMAKE_POSITION_INDEPENDENT_CODE ON) # Needed to link this static lib into a dynamic lib
+
 set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/SyriusUtils.hpp
     include/SyriusUtils/PlatformDetection.hpp

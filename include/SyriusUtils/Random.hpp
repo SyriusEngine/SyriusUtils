@@ -3,11 +3,12 @@
 #include <random>
 
 #include "Types/Types.hpp"
+#include "ExportUtils.hpp"
 
 
 namespace Syrius {
 
-    class Random {
+    class SR_UTILS_API Random {
     public:
         static void setSeed(u64);
 
