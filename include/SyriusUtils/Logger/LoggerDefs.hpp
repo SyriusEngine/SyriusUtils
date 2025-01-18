@@ -28,6 +28,11 @@ namespace Syrius{
         u32 line;
     };
 
+    /**
+     * @brief Converts a SR_MESSAGE_SEVERITY enum to a std::string.
+     * @param severity Severity enum to convert.
+     * @return The severity as string.
+     */
     SR_UTILS_API std::string getMessageSeverityString(SR_MESSAGE_SEVERITY severity);
 
 }

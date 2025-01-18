@@ -12,8 +12,6 @@ namespace Syrius::Priv {
     void formatAssert(const char* assertionType, const char* condition, const char* file, const char* func, int line, char const* const message, Args... args){
         if constexpr (sizeof...(args) == 0){
             printf("[%s]: [%s : %s : %i]: Condition: %s failed\n", assertionType, file, func, line, condition);
-            fflush(stdout); // print message BEFORE program halts
-            std::abort();
         }
         else{
             std::size_t size = snprintf(nullptr, 0, message, args...);
@@ -21,9 +19,9 @@ namespace Syrius::Priv {
             snprintf(buffer.data(), size + 1, message, args...);
 
             printf("[%s]: [%s : %s : %i]: Condition: %s failed: %s\n", assertionType, file, func, line, condition, buffer.data());
-            fflush(stdout); // print message BEFORE program halts
-            std::abort();
         }
+        fflush(stdout); // print message BEFORE program halts
+        std::abort();
     }
 }
 

@@ -1,16 +1,18 @@
 #include "../../include/SyriusUtils/Logger/Logger.hpp"
 
 #include <iostream>
+#include <sstream>
 
 namespace Syrius{
 
     void defaultLogMessage(const Message& message){
-        std::string msg = "[Syrius::Logger]";
-        msg += " [" + message.file + " : " + message.function + " : " + std::to_string(message.line) + "] ";
-        msg += "[" + getMessageSeverityString(message.severity) + "] ";
-        msg += "[" + message.source + "]: ";
-        msg += message.message;
-        std::cout << msg << std::endl;
+        std::stringstream ss;
+        ss << "[Syrius::Logger]";
+        ss <<  " [" << message.file << " : " << message.function << " : " << std::to_string(message.line) << "] ";
+        ss << "[" << getMessageSeverityString(message.severity) << "] ";
+        ss << "[" << message.source << "]: ";
+        ss << message.message;
+        std::cout << ss.str() << std::endl;
     }
 
     DebugCallback Logger::m_DebugCallback = defaultLogMessage;

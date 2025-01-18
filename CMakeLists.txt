@@ -55,8 +55,6 @@ set(SYRIUS_UTILS_TEST_SRC
     test/TestTypes.cpp
     test/TestTypes.hpp
     test/Logger/TestLogger.cpp
-    test/TestRandom.cpp
-    test/TestRandom.hpp
 )
 
 add_library(SyriusUtils STATIC ${SYRIUS_UTILS_HEADERS} ${SYRIUS_UTILS_SRC})
