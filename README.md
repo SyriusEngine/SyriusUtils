@@ -10,6 +10,16 @@ Repository that contains some useful utilities for the Syrius project. Utilities
 - Commonly used enums.
 
 # Build
+## Platforms
+The project should work on the following reference platforms:
+- Windows 11
+- Ubuntu 20.04
+
+But any platform that has a C++17 compliant compiler should work. The reference platforms are tested in the CI with the following compilers:
+- MSVC 
+- GCC
+- Clang
+
 ## Dependencies
 This repo has no dependencies (except for the build utils submodule). When building the tests, gtest is required but is pulled automatically by CMake.
 
