@@ -1,4 +1,6 @@
 # SyriusUtils
+[![CI](https://github.com/SyriusEngine/SyriusUtils/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/SyriusEngine/SyriusUtils/actions/workflows/main.yml)
+
 Repository that contains some useful utilities for the Syrius project. Utilities include:
 - logger + macros
 - Random number generator
