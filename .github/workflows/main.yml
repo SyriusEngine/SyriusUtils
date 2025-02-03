@@ -3,36 +3,49 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  build-unix:
+  build-gnu:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        compiler: [gcc, clang]
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
     - name: Install dependencies
-      run: sudo apt-get install -y cmake git
+      run: sudo apt-get install -y cmake git g++
 
-    - name: Set up ${{ matrix.compiler }}
-      uses: rlalik/setup-cpp-compiler@master
-      with:
-        compiler: ${{ matrix.compiler }}
-
-    - name: Compile with ${{ matrix.compiler }}
+    - name: Compile with g++
       run: |
         mkdir build
         cd build
-        cmake .. -DBUILD_TESTS=on -DCMAKE_C_COMPILER=${{ matrix.compiler }}
+        cmake .. -DBUILD_TESTS=on -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
         make
 
     - name: Run tests
       run: |
         cd build
         ./TestSyriusUtils
+
+  build-clang:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: sudo apt-get install -y cmake git clang
+
+      - name: Compile with g++
+        run: |
+          mkdir build
+          cd build
+          cmake .. -DBUILD_TESTS=on -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+          make
+
+      - name: Run tests
+        run: |
+          cd build
+          ./TestSyriusUtils
 
   build-windows:
     runs-on: windows-latest
