@@ -42,6 +42,7 @@ set(SYRIUS_UTILS_HEADERS
         include/SyriusUtils/Clock/Clock.hpp
         include/SyriusUtils/Clock/TimeProfiler.hpp
         include/SyriusUtils/Clock/ClockMacros.hpp
+        include/SyriusUtils/MemoryProfiler.hpp
 )
 
 set(SYRIUS_UTILS_SRC
@@ -53,7 +54,8 @@ set(SYRIUS_UTILS_SRC
     src/Logger/LoggerDefs.cpp
     src/Random.cpp
         src/Clock/Clock.cpp
-        src/Clock/TimeProfiler.cpp)
+        src/Clock/TimeProfiler.cpp
+        src/MemoryProfiler.cpp)
 
 set(SYRIUS_UTILS_TEST_SRC
     ${SYRIUS_UTILS_SRC}

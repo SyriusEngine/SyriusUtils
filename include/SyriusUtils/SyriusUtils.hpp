@@ -4,6 +4,7 @@
 #include "ExportUtils.hpp"
 #include "Conditions.hpp"
 #include "ResourceView.hpp"
+#include "MemoryProfiler.hpp"
 
 #include "Types/Types.hpp"
 #include "Types/SymbolicTypes.hpp"
