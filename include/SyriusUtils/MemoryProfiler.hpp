@@ -3,6 +3,8 @@
 #include "ExportUtils.hpp"
 #include "Types/Types.hpp"
 
+#include <cstdlib> // malloc, free
+
 namespace Syrius {
 
     class SR_UTILS_API MemoryProfiler {
