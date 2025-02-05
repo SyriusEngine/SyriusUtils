@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdexcept>
+
 #include "LoggerDefs.hpp"
 #include <vector>
 
@@ -57,7 +59,7 @@ namespace Syrius{
             msg.line = line;
             logMessage(msg);
             if (severity == SR_MESSAGE_SEVERITY_FATAL){
-                std::abort();
+                throw std::runtime_error(msg.message);
             }
         }
 
