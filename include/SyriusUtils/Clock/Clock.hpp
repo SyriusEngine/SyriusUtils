@@ -3,30 +3,17 @@
 #include "../Types/Types.hpp"
 #include "../ExportUtils.hpp"
 
+#include <chrono>
+
 namespace Syrius{
 
-    /**
-     * @brief Returns the current time in seconds.
-     * @return Time in seconds.
-     */
-    SR_UTILS_API Time getTimeSeconds();
+    using namespace std::chrono_literals;
 
-    /**
-     * @brief Returns the current time in milliseconds.
-     * @return Time in milliseconds.
-     */
-    SR_UTILS_API Time getTimeMilliseconds();
+    using Duration = std::chrono::duration<double>;
+    using TimePoint = std::chrono::time_point<std::chrono::high_resolution_clock, Duration>;
 
-    /**
-     * @brief Returns the current time in microseconds.
-     * @return Time in microseconds.
-     */
-    SR_UTILS_API Time getTimeMicroseconds();
-
-    /**
-     * @brief Returns the current time in nanoseconds.
-     * @return Time in nanoseconds.
-     */
-    SR_UTILS_API Time getTimeNanoseconds();
+    inline TimePoint getTime(){
+        return std::chrono::high_resolution_clock::now();
+    }
 
 }
