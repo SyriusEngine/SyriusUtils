@@ -55,11 +55,11 @@ namespace Syrius{
 
     };
 
-    class SyriusAssert {
+    class SyriusAssert: public std::exception {
     public:
         template<typename... Args>
         SyriusAssert(const std::string& assertionType, const std::string& source, const std::string& message,
-                        const std::string& function, const std::string& file, u32 line, Args&&... args) {
+                        const std::string& function, const std::string& file, u32 line, Args&&... args){
             m_Message.message = fmt::format(message, std::forward<Args>(args)...);
             m_Message.severity = SR_MESSAGE_SEVERITY_FATAL;
             m_Message.source = source;
@@ -67,6 +67,14 @@ namespace Syrius{
             m_Message.file = file;
             m_Message.line = line;
             fmt::print("[{}:{}:{}] [{}] [{}]: {}\n", file, function, line, assertionType, source, m_Message.message);
+        }
+
+        [[nodiscard]] const char* what() const noexcept override {
+            return m_Message.message.c_str();
+        }
+
+        [[nodiscard]] const Message& getMessage() const {
+            return m_Message;
         }
 
     private:
