@@ -1,17 +1,21 @@
-#include "TestTypes.hpp"
 #include "../include/SyriusUtils/Types/SymbolicTypes.hpp"
+
+#include <gtest/gtest.h>
+
+class TestTypes: public testing::Test{
+protected:
+    void SetUp() override {
+
+    }
+
+    void TearDown() override {
+
+    }
+};
 
 using namespace Syrius;
 
-void TestTypes::SetUp() {
-    Test::SetUp();
-}
-
-void TestTypes::TearDown() {
-    Test::TearDown();
-}
-
-TEST_F(TestTypes, testGetTypeSize){
+TEST_F(TestTypes, GetTypeSize){
     // Base Types
     EXPECT_EQ(getTypeSize(SR_TYPE_NONE), 0);
     EXPECT_EQ(getTypeSize(SR_VOID), 0);
@@ -48,7 +52,7 @@ TEST_F(TestTypes, testGetTypeSize){
     EXPECT_EQ(getTypeSize(SR_FLOAT64_4X4), 128);
 }
 
-TEST_F(TestTypes, testGetScalarComponentCount){
+TEST_F(TestTypes, GetScalarComponentCount){
     // Scalar Types, test a few
     EXPECT_EQ(getScalarComponentCount(SR_UINT8_4), 4);
     EXPECT_EQ(getScalarComponentCount(SR_UINT8_3X3), 9);
@@ -70,7 +74,7 @@ TEST_F(TestTypes, testGetScalarComponentCount){
     EXPECT_EQ(getScalarComponentCount(SR_FLOAT64_4X4), 16);
 }
 
-TEST_F(TestTypes, testGetScalarType){
+TEST_F(TestTypes, GetScalarType){
     EXPECT_EQ(getScalarType(SR_UINT8_4), SR_UINT8);
     EXPECT_EQ(getScalarType(SR_UINT8_3X3), SR_UINT8);
     EXPECT_EQ(getScalarType(SR_UINT32_4X4), SR_UINT32);
@@ -84,7 +88,7 @@ TEST_F(TestTypes, testGetScalarType){
     EXPECT_EQ(getScalarType(SR_FLOAT64_3X3), SR_FLOAT64);
 }
 
-TEST_F(TestTypes, testGetTextureChannelCount){
+TEST_F(TestTypes, GetTextureChannelCount){
     EXPECT_EQ(getTextureChannelCount(SR_TEXTURE_RGBA_F32), 4);
     EXPECT_EQ(getTextureChannelCount(SR_TEXTURE_RG_I32), 2);
     EXPECT_EQ(getTextureChannelCount(SR_TEXTURE_R_F16), 1);
@@ -95,7 +99,7 @@ TEST_F(TestTypes, testGetTextureChannelCount){
     EXPECT_EQ(getTextureChannelCount(SR_TEXTURE_R_F32), 1);
 }
 
-TEST_F(TestTypes, testGetTextureDataType){
+TEST_F(TestTypes, GetTextureDataType){
     EXPECT_EQ(getTextureDataType(SR_TEXTURE_RGBA_F32), SR_FLOAT32);
     EXPECT_EQ(getTextureDataType(SR_TEXTURE_RG_I32), SR_INT32);
     EXPECT_EQ(getTextureDataType(SR_TEXTURE_R_F16), SR_FLOAT16);

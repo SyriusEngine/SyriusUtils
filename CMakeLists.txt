@@ -60,9 +60,9 @@ set(SYRIUS_UTILS_SRC
 set(SYRIUS_UTILS_TEST_SRC
     ${SYRIUS_UTILS_SRC}
     test/TestTypes.cpp
-    test/TestTypes.hpp
     test/Logger/TestLogger.cpp
     test/Logger/TestConditions.cpp
+    test/TestUtils.cpp
 )
 
 fetch_fmt()
