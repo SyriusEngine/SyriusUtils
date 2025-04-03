@@ -1,10 +1,9 @@
 #pragma once
 
-#include "PlatformDetection.hpp"
 #include "ExportUtils.hpp"
-#include "Conditions.hpp"
-#include "ResourceView.hpp"
 #include "MemoryProfiler.hpp"
+#include "PlatformDetection.hpp"
+#include "ResourceView.hpp"
 
 #include "Types/Types.hpp"
 #include "Types/SymbolicTypes.hpp"
@@ -12,6 +11,7 @@
 #include "Logger/LoggerDefs.hpp"
 #include "Logger/Logger.hpp"
 #include "Logger/LoggerMacros.hpp"
+#include "Logger/Conditions.hpp"
 
 #include "Clock/Clock.hpp"
 

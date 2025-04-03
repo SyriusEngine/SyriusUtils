@@ -30,7 +30,7 @@ set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/PlatformDetection.hpp
     include/SyriusUtils/ResourceView.hpp
     include/SyriusUtils/ExportUtils.hpp
-    include/SyriusUtils/Conditions.hpp
+    include/SyriusUtils/Logger/Conditions.hpp
 
     include/SyriusUtils/Types/Types.hpp
     include/SyriusUtils/Types/SymbolicTypes.hpp
@@ -39,10 +39,10 @@ set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/Logger/LoggerDefs.hpp
     include/SyriusUtils/Logger/LoggerMacros.hpp
     include/SyriusUtils/Random.hpp
-        include/SyriusUtils/Clock/Clock.hpp
-        include/SyriusUtils/Clock/TimeProfiler.hpp
-        include/SyriusUtils/Clock/ClockMacros.hpp
-        include/SyriusUtils/MemoryProfiler.hpp
+    include/SyriusUtils/Clock/Clock.hpp
+    include/SyriusUtils/Clock/TimeProfiler.hpp
+    include/SyriusUtils/Clock/ClockMacros.hpp
+    include/SyriusUtils/MemoryProfiler.hpp
 )
 
 set(SYRIUS_UTILS_SRC
@@ -53,19 +53,27 @@ set(SYRIUS_UTILS_SRC
     src/Logger/Logger.cpp
     src/Logger/LoggerDefs.cpp
     src/Random.cpp
-        src/Clock/Clock.cpp
-        src/Clock/TimeProfiler.cpp
-        src/MemoryProfiler.cpp)
+    src/Clock/Clock.cpp
+    src/Clock/TimeProfiler.cpp
+    src/MemoryProfiler.cpp)
 
 set(SYRIUS_UTILS_TEST_SRC
     ${SYRIUS_UTILS_SRC}
     test/TestTypes.cpp
     test/TestTypes.hpp
     test/Logger/TestLogger.cpp
+    test/Logger/TestConditions.cpp
+)
+
+fetch_fmt()
+
+set(SYRIUS_UTILS_LIBS
+    fmt
 )
 
 add_library(SyriusUtils STATIC ${SYRIUS_UTILS_HEADERS} ${SYRIUS_UTILS_SRC})
 target_include_directories(SyriusUtils PUBLIC include)
+target_link_libraries(SyriusUtils PUBLIC ${SYRIUS_UTILS_LIBS})
 
 if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTS)
     # Add GTest
@@ -76,7 +84,7 @@ if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTS)
     add_executable(TestSyriusUtils ${SYRIUS_UTILS_TEST_SRC})
     add_dependencies(TestSyriusUtils gtest)
 
-    target_link_libraries(TestSyriusUtils GTest::gtest GTest::gtest_main)
+    target_link_libraries(TestSyriusUtils ${SYRIUS_UTILS_LIBS} GTest::gtest GTest::gtest_main)
 endif ()
 
 

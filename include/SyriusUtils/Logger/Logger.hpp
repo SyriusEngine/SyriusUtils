@@ -1,13 +1,13 @@
 #pragma once
 
-#include <stdexcept>
-
 #include "LoggerDefs.hpp"
-#include <vector>
+#include <fmt/core.h>
 
 namespace Syrius{
 
     using DebugCallback = void(*)(const Message& message);
+
+    void defaultLogger(const Message& message);
 
     class SR_UTILS_API Logger{
     public:
@@ -39,33 +39,38 @@ namespace Syrius{
          */
         template<typename... Args>
         static void log(SR_MESSAGE_SEVERITY severity, const std::string& source, const std::string& message,
-                        const std::string& function, const std::string& file, u32 line, Args... args){
+                        const std::string& function, const std::string& file, u32 line, Args&&... args){
             Message msg;
-            if constexpr (sizeof...(args) != 0 ){
-                std::size_t size = snprintf(nullptr, 0, message.c_str(), args...);
-                std::vector<char> buffer(size + 1);
-                snprintf(buffer.data(), size + 1, message.c_str(), args...);
-                std::string formattedMessage(buffer.data());
-
-                msg.message = formattedMessage;
-            }
-            else{
-                msg.message = message;
-            }
+            msg.message = fmt::format(message, std::forward<Args>(args)...);
             msg.severity = severity;
             msg.source = source;
             msg.function = function;
             msg.file = file;
             msg.line = line;
             logMessage(msg);
-            if (severity == SR_MESSAGE_SEVERITY_FATAL){
-                throw std::runtime_error(msg.message);
-            }
         }
 
     private:
         static DebugCallback m_DebugCallback;
 
+    };
+
+    class SyriusAssert {
+    public:
+        template<typename... Args>
+        SyriusAssert(const std::string& assertionType, const std::string& source, const std::string& message,
+                        const std::string& function, const std::string& file, u32 line, Args&&... args) {
+            m_Message.message = fmt::format(message, std::forward<Args>(args)...);
+            m_Message.severity = SR_MESSAGE_SEVERITY_FATAL;
+            m_Message.source = source;
+            m_Message.function = function;
+            m_Message.file = file;
+            m_Message.line = line;
+            fmt::print("[{}:{}:{}] [{}] [{}]: {}\n", file, function, line, assertionType, source, m_Message.message);
+        }
+
+    private:
+        Message m_Message;
     };
 
 }
