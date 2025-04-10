@@ -1,4 +1,5 @@
 #include "../../include/SyriusUtils/Types/SymbolicTypes.hpp"
+#include "../../include/SyriusUtils/Logger/LoggerMacros.hpp"
 
 namespace Syrius{
 
@@ -18,7 +19,7 @@ namespace Syrius{
             case SR_FLOAT32:    return 4;
             case SR_FLOAT64:    return 8;
             default: {
-                // TODO SR_CORE_WARNING("Unknown type (%i) given to converter", type);
+                SR_LOG_WARNING("Converter", "Unknown type {} given to converter", type);
                 return 0;
             }
         }

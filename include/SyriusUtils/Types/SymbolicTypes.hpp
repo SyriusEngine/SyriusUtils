@@ -2,6 +2,7 @@
 
 #include "Types.hpp"
 #include "../ExportUtils.hpp"
+#include <fmt/ostream.h>
 
 // basic types
 typedef enum SR_TYPE: u8 {
@@ -209,5 +210,16 @@ namespace Syrius{
     SR_TYPE SR_UTILS_API getTextureDataType(SR_TEXTURE_FORMAT format);
 
     u8 SR_UTILS_API getBytesPerPixel(SR_TEXTURE_FORMAT format);
-
 }
+
+template<>
+struct fmt::formatter<SR_TYPE> : fmt::ostream_formatter {
+};
+
+template<>
+struct fmt::formatter<SR_SCALAR_TYPE> : fmt::ostream_formatter {
+};
+
+template<>
+struct fmt::formatter<SR_TEXTURE_FORMAT> : fmt::ostream_formatter {
+};
