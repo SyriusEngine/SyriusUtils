@@ -26,11 +26,11 @@
 #define SR_LOG_ERROR(source, message, ...) SR_LOG(SR_MESSAGE_SEVERITY_HIGH, source, message, ##__VA_ARGS__)
 
 
-#define SR_LOG_INFO_IF_FALSE(condition, source, message, ...) SR_LOG_IF_FALSE(SR_MESSAGE_SEVERITY_INFO, condition, source, message, ##__VA_ARGS__)
-#define SR_LOG_DEBUG_IF_FALSE(condition, source, message, ...) SR_LOG_IF_FALSE(SR_MESSAGE_SEVERITY_DEBUG, condition, source, message, ##__VA_ARGS__)
-#define SR_LOG_PERFORMANCE_IF_FALSE(condition, source, message, ...) SR_LOG_IF_FALSE(SR_MESSAGE_SEVERITY_PERFORMANCE, condition, source, message, ##__VA_ARGS__)
-#define SR_LOG_WARNING_IF_FALSE(condition, source, message, ...) SR_LOG_IF_FALSE(SR_MESSAGE_SEVERITY_MEDIUM, condition, source, message, ##__VA_ARGS__)
-#define SR_LOG_ERROR_IF_FALSE(condition, source, message, ...) SR_LOG_IF_FALSE(SR_MESSAGE_SEVERITY_HIGH, condition, source, message, ##__VA_ARGS__)
+#define SR_LOG_INFO_IF_FALSE(condition, source, message, ...) SR_LOG_IF_FALSE(condition, SR_MESSAGE_SEVERITY_INFO, source, message, ##__VA_ARGS__)
+#define SR_LOG_DEBUG_IF_FALSE(condition, source, message, ...) SR_LOG_IF_FALSE(condition, SR_MESSAGE_SEVERITY_DEBUG, source, message, ##__VA_ARGS__)
+#define SR_LOG_PERFORMANCE_IF_FALSE(condition, source, message, ...) SR_LOG_IF_FALSE(condition, SR_MESSAGE_SEVERITY_PERFORMANCE, source, message, ##__VA_ARGS__)
+#define SR_LOG_WARNING_IF_FALSE(condition, source, message, ...) SR_LOG_IF_FALSE(condition, SR_MESSAGE_SEVERITY_MEDIUM, source, message, ##__VA_ARGS__)
+#define SR_LOG_ERROR_IF_FALSE(condition, source, message, ...) SR_LOG_IF_FALSE(condition, SR_MESSAGE_SEVERITY_HIGH, source, message, ##__VA_ARGS__)
 
 #else
 #define SR_LOG_INFO(source, message, ...)
