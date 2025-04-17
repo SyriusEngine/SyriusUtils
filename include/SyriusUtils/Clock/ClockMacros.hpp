@@ -1,6 +1,6 @@
 #pragma once
 
-#include "TimeProfiler.hpp"
+#include <SyriusUtils/Clock/TimeProfiler.hpp>
 
 #if defined(SR_DEBUG)
 

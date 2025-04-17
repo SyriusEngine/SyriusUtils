@@ -1,19 +1,19 @@
 #pragma once
 
-#include "ExportUtils.hpp"
-#include "MemoryProfiler.hpp"
-#include "PlatformDetection.hpp"
-#include "ResourceView.hpp"
+#include <SyriusUtils/ExportUtils.hpp>
+#include <SyriusUtils/MemoryProfiler.hpp>
+#include <SyriusUtils/PlatformDetection.hpp>
+#include <SyriusUtils/ResourceView.hpp>
 
-#include "Types/Types.hpp"
-#include "Types/SymbolicTypes.hpp"
+#include <SyriusUtils/Types/Types.hpp>
+#include <SyriusUtils/Types/SymbolicTypes.hpp>
 
-#include "Logger/LoggerDefs.hpp"
-#include "Logger/Logger.hpp"
-#include "Logger/LoggerMacros.hpp"
-#include "Logger/Conditions.hpp"
+#include <SyriusUtils/Logger/LoggerDefs.hpp>
+#include <SyriusUtils/Logger/Logger.hpp>
+#include <SyriusUtils/Logger/LoggerMacros.hpp>
+#include <SyriusUtils/Logger/Conditions.hpp>
 
-#include "Clock/Clock.hpp"
+#include <SyriusUtils/Clock/Clock.hpp>
 
 #include <filesystem>
 

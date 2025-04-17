@@ -43,6 +43,8 @@ set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/Clock/TimeProfiler.hpp
     include/SyriusUtils/Clock/ClockMacros.hpp
     include/SyriusUtils/MemoryProfiler.hpp
+    include/SyriusUtils/Srstl/Srstl.hpp
+    include/SyriusUtils/Srstl/KeyVector.hpp
 )
 
 set(SYRIUS_UTILS_SRC
@@ -63,6 +65,7 @@ set(SYRIUS_UTILS_TEST_SRC
     test/Logger/TestLogger.cpp
     test/Logger/TestConditions.cpp
     test/TestUtils.cpp
+    test/Srstl/TestKeyVector.cpp
 )
 
 fetch_fmt()
@@ -79,12 +82,18 @@ if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTS)
     # Add GTest
     fetch_gtest()
 
+    enable_testing()
+
     message(STATUS "Building tests")
 
     add_executable(TestSyriusUtils ${SYRIUS_UTILS_TEST_SRC})
-    add_dependencies(TestSyriusUtils gtest)
+    add_dependencies(TestSyriusUtils SyriusUtils gtest)
 
-    target_link_libraries(TestSyriusUtils ${SYRIUS_UTILS_LIBS} GTest::gtest GTest::gtest_main)
+    target_link_libraries(TestSyriusUtils PUBLIC SyriusUtils GTest::gtest GTest::gtest_main)
+
+    add_test(NAME CTestSyriusUtils COMMAND ${PROOT} $<TARGET_FILE:TestSyriusUtils>)
+    set_tests_properties(CTestSyriusUtils PROPERTIES
+            WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
 endif ()
 
 

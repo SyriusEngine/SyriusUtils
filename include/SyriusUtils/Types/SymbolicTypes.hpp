@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Types.hpp"
-#include "../ExportUtils.hpp"
+#include <SyriusUtils/Types/Types.hpp>
+#include <SyriusUtils/ExportUtils.hpp>
 #include <fmt/ostream.h>
 
 // basic types

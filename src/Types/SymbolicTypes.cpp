@@ -1,5 +1,5 @@
-#include "../../include/SyriusUtils/Types/SymbolicTypes.hpp"
-#include "../../include/SyriusUtils/Logger/LoggerMacros.hpp"
+#include <SyriusUtils/Types/SymbolicTypes.hpp>
+#include <SyriusUtils/Logger/LoggerMacros.hpp>
 
 namespace Syrius{
 

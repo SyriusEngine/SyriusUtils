@@ -3,8 +3,8 @@
 #include <fmt/core.h>
 #include <string>
 
-#include "../Types/Types.hpp"
-#include "../ExportUtils.hpp"
+#include <SyriusUtils/Types/Types.hpp>
+#include <SyriusUtils/ExportUtils.hpp>
 
 typedef enum SR_MESSAGE_SEVERITY{
     SR_MESSAGE_SEVERITY_NONE        = 0x00,

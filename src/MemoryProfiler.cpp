@@ -1,4 +1,4 @@
-#include "../include/SyriusUtils/MemoryProfiler.hpp"
+#include <SyriusUtils/MemoryProfiler.hpp>
 
 namespace Syrius {
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Logger.hpp"
+#include <SyriusUtils/Logger/Logger.hpp>
 
 #define SR_LOG_THROW(source, message, ...) \
     throw std::runtime_error(fmt::format("[{}:{}:{}] [EXCEPTION] [{}]: {}\n", SR_FILE, SR_FUNC, SR_LINE, source, fmt::format(message, ##__VA_ARGS__)));

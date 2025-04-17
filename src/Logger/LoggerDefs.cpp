@@ -1,4 +1,4 @@
-#include "../../include/SyriusUtils/Logger/LoggerDefs.hpp"
+#include <SyriusUtils/Logger/LoggerDefs.hpp>
 
 namespace Syrius{
 

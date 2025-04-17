@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Types/Types.hpp"
-#include "../ExportUtils.hpp"
+#include <SyriusUtils/Types/Types.hpp>
+#include <SyriusUtils/ExportUtils.hpp>
 
 #include <chrono>
 

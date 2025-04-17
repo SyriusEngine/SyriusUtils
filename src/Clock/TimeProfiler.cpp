@@ -1,4 +1,4 @@
-#include "../../include/SyriusUtils/Clock/TimeProfiler.hpp"
+#include <SyriusUtils/Clock/TimeProfiler.hpp>
 
 namespace Syrius{
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ExportUtils.hpp"
-#include "Types/Types.hpp"
+#include <SyriusUtils/ExportUtils.hpp>
+#include <SyriusUtils/Types/Types.hpp>
 
 #include <cstdlib> // malloc, free
 

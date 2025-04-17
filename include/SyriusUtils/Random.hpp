@@ -2,8 +2,8 @@
 
 #include <random>
 
-#include "Types/Types.hpp"
-#include "ExportUtils.hpp"
+#include <SyriusUtils/Types/Types.hpp>
+#include <SyriusUtils/ExportUtils.hpp>
 
 
 namespace Syrius {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LoggerDefs.hpp"
+#include <SyriusUtils/Logger/LoggerDefs.hpp>
 #include <fmt/core.h>
 
 namespace Syrius{

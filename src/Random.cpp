@@ -1,4 +1,4 @@
-#include "../include/SyriusUtils/Random.hpp"
+#include <SyriusUtils/Random.hpp>
 
 namespace Syrius {
 

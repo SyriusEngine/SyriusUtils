@@ -1,6 +1,6 @@
-#include "../include/SyriusUtils/SyriusUtils.hpp"
-#include "../include/SyriusUtils/Random.hpp"
-#include "../include/SyriusUtils/Logger/LoggerMacros.hpp"
+#include <SyriusUtils/SyriusUtils.hpp>
+#include <SyriusUtils/Random.hpp>
+#include <SyriusUtils/Logger/LoggerMacros.hpp>
 
 namespace Syrius{
 

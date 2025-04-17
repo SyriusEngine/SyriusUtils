@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Types/Types.hpp"
+#include <SyriusUtils/Types/Types.hpp>
 #include <string>
 #include <unordered_map>
 #include <chrono>

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../PlatformDetection.hpp"
-#include "Logger.hpp"
+#include <SyriusUtils/PlatformDetection.hpp>
+#include <SyriusUtils/Logger/Logger.hpp>
 
 #if defined(SR_DEBUG)
 
