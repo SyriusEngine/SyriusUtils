@@ -17,7 +17,7 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake .. -DBUILD_TESTS=on -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+        cmake .. -DBUILD_TESTS=on -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_BUILD_TYPE=Debug
         make
 
     - name: Run tests
@@ -39,7 +39,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake .. -DBUILD_TESTS=on -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+          cmake .. -DBUILD_TESTS=on -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_BUILD_TYPE=Debug
           make
 
       - name: Run tests
@@ -61,8 +61,8 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake .. -DBUILD_TESTS=on
-        cmake --build . --config Release
+        cmake .. -DBUILD_TESTS=on -DCMAKE_BUILD_TYPE=Debug
+        cmake --build .
 
     - name: Run tests
       run: |
