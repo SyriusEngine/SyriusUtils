@@ -12,7 +12,7 @@ namespace Srstl {
     public:
         KeyVector() = default;
 
-        explicit KeyVector(uint32_t size) {
+        explicit KeyVector(std::size_t size) {
             m_Data.reserve(size);
         }
 
