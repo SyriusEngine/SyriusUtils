@@ -25,6 +25,13 @@ namespace Syrius{
         static void stop(const std::string& name);
 
         /**
+         * @brief Retrieves the elapsed time of the timer with the given name.
+         * @param name The name of the timer.
+         * @return Duration
+         */
+        static Duration getElapsedTime(const std::string& name);
+
+        /**
          * @brief Get the elapsed time of all timers.
          * @return A map with the name of the timer as key and the elapsed time as value.
          */
