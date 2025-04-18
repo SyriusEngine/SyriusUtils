@@ -88,19 +88,19 @@ namespace Srstl {
             m_KeyIndexMap[lastElementKey] = currentDataIndex;
         }
 
-        typename std::vector<D>::iterator begin() {
+        auto begin() {
             return m_Data.begin();
         }
 
-        typename std::vector<D>::iterator begin() const {
+        auto begin() const {
             return m_Data.begin();
         }
 
-        typename std::vector<D>::iterator end() {
+        auto end() {
             return m_Data.end();
         }
 
-        typename std::vector<D>::iterator end() const {
+        auto end() const {
             return m_Data.end();
         }
 
