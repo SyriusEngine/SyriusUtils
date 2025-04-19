@@ -45,6 +45,7 @@ set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/MemoryProfiler.hpp
     include/SyriusUtils/Srstl/Srstl.hpp
     include/SyriusUtils/Srstl/KeyVector.hpp
+        include/SyriusUtils/DevUtils/TestingMacros.hpp
 )
 
 set(SYRIUS_UTILS_SRC
@@ -83,6 +84,7 @@ if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME) AND BUILD_TESTS)
     fetch_gtest()
 
     enable_testing()
+    add_compile_definitions(SR_TESTING)
 
     message(STATUS "Building tests")
 
