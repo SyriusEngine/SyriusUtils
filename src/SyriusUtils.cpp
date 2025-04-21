@@ -5,7 +5,8 @@
 namespace Syrius{
 
     UID generateID(){
-        return Random::getRandom<UID>(1, std::numeric_limits<UID>::max());
+        static UID id = 1;
+        return id++;
     }
 
     void checkFile(const fs::path& file){
