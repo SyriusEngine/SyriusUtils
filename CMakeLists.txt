@@ -45,7 +45,7 @@ set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/MemoryProfiler.hpp
     include/SyriusUtils/Srstl/Srstl.hpp
     include/SyriusUtils/Srstl/KeyVector.hpp
-        include/SyriusUtils/DevUtils/TestingMacros.hpp
+    include/SyriusUtils/DevUtils/TestingMacros.hpp
 )
 
 set(SYRIUS_UTILS_SRC
