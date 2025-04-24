@@ -4,6 +4,7 @@
 #include <SyriusUtils/MemoryProfiler.hpp>
 #include <SyriusUtils/PlatformDetection.hpp>
 #include <SyriusUtils/ResourceView.hpp>
+#include <SyriusUtils/Math.hpp>
 
 #include <SyriusUtils/Types/Types.hpp>
 #include <SyriusUtils/Types/SymbolicTypes.hpp>

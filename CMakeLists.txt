@@ -46,6 +46,7 @@ set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/Srstl/Srstl.hpp
     include/SyriusUtils/Srstl/KeyVector.hpp
     include/SyriusUtils/DevUtils/TestingMacros.hpp
+    include/SyriusUtils/Math.hpp
 )
 
 set(SYRIUS_UTILS_SRC
