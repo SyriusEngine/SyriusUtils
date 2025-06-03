@@ -65,27 +65,26 @@ namespace Srstl {
             SR_PRECONDITION(m_KeyIndexMap.find(key) != m_KeyIndexMap.end(),
                             "[KeyVector]: cannot remove element, key {} does not exists", key);
 
-            auto lastDataIndex = m_Data.size() - 1;
-            auto currentDataIndex = m_KeyIndexMap[key];
-            K lastElementKey;
-            for (const auto &lastKey: m_KeyIndexMap) {
-                if (lastDataIndex == lastKey.second) {
-                    lastElementKey = lastKey.first;
-                    break;
+            auto it = m_KeyIndexMap.find(key);
+
+            size_t indexToRemove = it->second;
+            size_t lastIndex = m_Data.size() - 1;
+
+            if (indexToRemove != lastIndex) {
+                // Move last element to the spot to remove
+                m_Data[indexToRemove] = std::move(m_Data[lastIndex]);
+
+                // Find the key of the last element
+                for (auto& pair : m_KeyIndexMap) {
+                    if (pair.second == lastIndex) {
+                        pair.second = indexToRemove;
+                        break;
+                    }
                 }
             }
-            // switch last and current element from place
-            // make sure to move the object!
-            auto swapped = std::move(m_Data[lastDataIndex]);
-            auto toDestroy = std::move(m_Data[currentDataIndex]);
-            m_Data[currentDataIndex] = std::move(swapped);
-            m_Data[lastDataIndex] = std::move(toDestroy);
 
-            // and delete the last element
             m_Data.pop_back();
-            m_KeyIndexMap.erase(key);
-            // update index
-            m_KeyIndexMap[lastElementKey] = currentDataIndex;
+            m_KeyIndexMap.erase(it);
         }
 
         auto begin() {
