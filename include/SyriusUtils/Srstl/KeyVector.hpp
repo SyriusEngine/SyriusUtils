@@ -37,28 +37,28 @@ namespace Srstl {
             SR_PRECONDITION(m_KeyIndexMap.find(key) != m_KeyIndexMap.end(), "[KeyVector]: cannot retrieve element, key "
                                                                             "{} does not exists", key);
 
-            return m_Data[m_KeyIndexMap[key]];
+            return m_Data[m_KeyIndexMap.at(key)];
         }
 
         D &get(const K &key) {
             SR_PRECONDITION(m_KeyIndexMap.find(key) != m_KeyIndexMap.end(), "[KeyVector]: cannot retrieve element, "
                                                                             "key {} does not exists", key);
 
-            return m_Data[m_KeyIndexMap[key]];
+            return m_Data[m_KeyIndexMap.at(key)];
         }
 
         const D &operator[](const K &key) const {
             SR_PRECONDITION(m_KeyIndexMap.find(key) != m_KeyIndexMap.end(),
                             "[KeyVector]: cannot retrieve element, key {} does not exists", key);
 
-            return m_Data[m_KeyIndexMap[key]];
+            return m_Data[m_KeyIndexMap.at(key)];
         }
 
         D &operator[](const K &key) {
             SR_PRECONDITION(m_KeyIndexMap.find(key) != m_KeyIndexMap.end(),
                             "[KeyVector]: cannot retrieve element, key {} does not exists", key);
 
-            return m_Data[m_KeyIndexMap[key]];
+            return m_Data[m_KeyIndexMap.at(key)];
         }
 
         void remove(const K &key) {
