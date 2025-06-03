@@ -62,3 +62,67 @@ TEST(TestKeyVector, EmplaceAndRetrieve) {
     EXPECT_EQ(vec[2].y, 7.0f);
 }
 
+TEST(TestKeyVector, InsertRemoveSingleElement) {
+    KeyVector<int, Position> vec;
+    vec.emplace(0, 2.0f, 3.0f);
+
+    EXPECT_EQ(vec[0].x, 2.0f);
+    EXPECT_EQ(vec[0].y, 3.0f);
+
+    vec.remove(0);
+
+    EXPECT_FALSE(vec.has(0));
+}
+
+TEST(TestKeyVector, InsertRemoveSameOrder) {
+    KeyVector<int, Position> vec;
+    vec.emplace(0, 2.0f, 3.0f);
+    vec.emplace(1, 2.0f, 3.0f);
+    vec.emplace(2, 2.0f, 3.0f);
+
+    EXPECT_TRUE(vec.has(0));
+    EXPECT_TRUE(vec.has(1));
+    EXPECT_TRUE(vec.has(2));
+
+    vec.remove(0);
+    EXPECT_FALSE(vec.has(0));
+    EXPECT_TRUE(vec.has(1));
+    EXPECT_TRUE(vec.has(2));
+
+    vec.remove(1);
+    EXPECT_FALSE(vec.has(0));
+    EXPECT_FALSE(vec.has(1));
+    EXPECT_TRUE(vec.has(2));
+
+    vec.remove(2);
+    EXPECT_FALSE(vec.has(0));
+    EXPECT_FALSE(vec.has(1));
+    EXPECT_FALSE(vec.has(2));
+}
+
+TEST(TestKeyVector, InsertRemoveReverseOrder) {
+    KeyVector<int, Position> vec;
+    vec.emplace(0, 2.0f, 3.0f);
+    vec.emplace(1, 2.0f, 3.0f);
+    vec.emplace(2, 2.0f, 3.0f);
+
+    EXPECT_TRUE(vec.has(0));
+    EXPECT_TRUE(vec.has(1));
+    EXPECT_TRUE(vec.has(2));
+
+    vec.remove(2);
+    EXPECT_TRUE(vec.has(0));
+    EXPECT_TRUE(vec.has(1));
+    EXPECT_FALSE(vec.has(2));
+
+    vec.remove(1);
+    EXPECT_TRUE(vec.has(0));
+    EXPECT_FALSE(vec.has(1));
+    EXPECT_FALSE(vec.has(2));
+
+    vec.remove(0);
+    EXPECT_FALSE(vec.has(0));
+    EXPECT_FALSE(vec.has(1));
+    EXPECT_FALSE(vec.has(2));
+}
+
