@@ -16,4 +16,12 @@ namespace Syrius{
         return std::chrono::high_resolution_clock::now();
     }
 
+    inline TimePoint timeFromEpoch(const u64 time) {
+        return TimePoint(Duration{static_cast<double>(time)});
+    }
+
+    inline TimePoint timeFromEpoch(const double time) {
+        return TimePoint(Duration{time});
+    }
+
 }

@@ -47,6 +47,8 @@ set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/Srstl/KeyVector.hpp
     include/SyriusUtils/DevUtils/TestingMacros.hpp
     include/SyriusUtils/Math.hpp
+    include/SyriusUtils/Conversions/FromString.hpp
+    include/SyriusUtils/Conversions/ToString.hpp
 )
 
 set(SYRIUS_UTILS_SRC
@@ -59,7 +61,9 @@ set(SYRIUS_UTILS_SRC
     src/Random.cpp
     src/Clock/Clock.cpp
     src/Clock/TimeProfiler.cpp
-    src/MemoryProfiler.cpp)
+    src/MemoryProfiler.cpp
+    src/Conversions/FromString.cpp
+    src/Conversions/ToString.cpp)
 
 set(SYRIUS_UTILS_TEST_SRC
     ${SYRIUS_UTILS_SRC}
@@ -68,6 +72,8 @@ set(SYRIUS_UTILS_TEST_SRC
     test/Logger/TestConditions.cpp
     test/TestUtils.cpp
     test/Srstl/TestKeyVector.cpp
+    test/Conversions/TestFromString.cpp
+    test/Conversions/TestToString.cpp
 )
 
 fetch_fmt()

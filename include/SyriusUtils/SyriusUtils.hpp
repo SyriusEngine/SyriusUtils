@@ -16,6 +16,9 @@
 
 #include <SyriusUtils/Clock/Clock.hpp>
 
+#include <SyriusUtils/Conversions/FromString.hpp>
+#include <SyriusUtils/Conversions/ToString.hpp>
+
 #include <filesystem>
 
 namespace Syrius{
