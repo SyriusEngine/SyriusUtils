@@ -15,6 +15,9 @@ namespace Syrius {
     TimePoint fromString(const std::string& str);
 
     template<>
+    SystemTimePoint fromString(const std::string& str);
+
+    template<>
     Duration fromString(const std::string& str);
 }
 

@@ -30,6 +30,26 @@ namespace Syrius {
     }
 
     template<>
+    SystemTimePoint fromString<SystemTimePoint>(const std::string& str) {
+        const std::string format = "%Y-%m-%d %H:%M:%S";
+
+        std::tm timeInfo = {};
+        std::istringstream ss(str);
+        ss >> std::get_time(&timeInfo, format.c_str());
+        if (ss.fail()) {
+            SR_LOG_THROW(s_FROM_STRING_LOGGER, "Failed to parse string {} to a system_clock::time_point", str);
+        }
+
+#if defined(SR_PLATFORM_WIN64)
+        std::time_t tt = _mkgmtime(&timeInfo);
+#else
+        std::time_t tt = timegm(&timeInfo);
+#endif
+
+        return std::chrono::system_clock::from_time_t(tt);
+    }
+
+    template<>
     Duration fromString(const std::string& str) {
         double value = 0.0;
         std::istringstream ss(str);
