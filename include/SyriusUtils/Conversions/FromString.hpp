@@ -2,6 +2,7 @@
 
 #include <SyriusUtils/Clock/Clock.hpp>
 #include <SyriusUtils/Logger/LoggerMacros.hpp>
+#include <string>
 
 namespace Syrius {
 

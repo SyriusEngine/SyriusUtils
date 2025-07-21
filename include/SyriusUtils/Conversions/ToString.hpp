@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SyriusUtils/Clock/Clock.hpp>
+#include <string>
 
 namespace Syrius {
 
