@@ -5,7 +5,6 @@
 #include <SyriusUtils/Types/Types.hpp>
 #include <SyriusUtils/ExportUtils.hpp>
 
-
 namespace Syrius {
 
     class SR_UTILS_API Random {

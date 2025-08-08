@@ -30,25 +30,31 @@ set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/PlatformDetection.hpp
     include/SyriusUtils/ResourceView.hpp
     include/SyriusUtils/ExportUtils.hpp
+    include/SyriusUtils/SyriusEnum.hpp
+    include/SyriusUtils/Random.hpp
+    include/SyriusUtils/MemoryProfiler.hpp
+    include/SyriusUtils/Math.hpp
+
+    include/SyriusUtils/DevUtils/MacroExpansion.hpp
+    include/SyriusUtils/DevUtils/TestingMacros.hpp
+
     include/SyriusUtils/Logger/Conditions.hpp
+    include/SyriusUtils/Logger/Logger.hpp
+    include/SyriusUtils/Logger/LoggerDefs.hpp
+    include/SyriusUtils/Logger/LoggerMacros.hpp
 
     include/SyriusUtils/Types/Types.hpp
     include/SyriusUtils/Types/SymbolicTypes.hpp
 
-    include/SyriusUtils/Logger/Logger.hpp
-    include/SyriusUtils/Logger/LoggerDefs.hpp
-    include/SyriusUtils/Logger/LoggerMacros.hpp
-    include/SyriusUtils/Random.hpp
+    include/SyriusUtils/Conversions/FromString.hpp
+    include/SyriusUtils/Conversions/ToString.hpp
+
+    include/SyriusUtils/Srstl/Srstl.hpp
+    include/SyriusUtils/Srstl/KeyVector.hpp
+
     include/SyriusUtils/Clock/Clock.hpp
     include/SyriusUtils/Clock/TimeProfiler.hpp
     include/SyriusUtils/Clock/ClockMacros.hpp
-    include/SyriusUtils/MemoryProfiler.hpp
-    include/SyriusUtils/Srstl/Srstl.hpp
-    include/SyriusUtils/Srstl/KeyVector.hpp
-    include/SyriusUtils/DevUtils/TestingMacros.hpp
-    include/SyriusUtils/Math.hpp
-    include/SyriusUtils/Conversions/FromString.hpp
-    include/SyriusUtils/Conversions/ToString.hpp
 )
 
 set(SYRIUS_UTILS_SRC
@@ -74,6 +80,7 @@ set(SYRIUS_UTILS_TEST_SRC
     test/Srstl/TestKeyVector.cpp
     test/Conversions/TestFromString.cpp
     test/Conversions/TestToString.cpp
+    test/TestSyriusEnum.cpp
 )
 
 fetch_fmt()

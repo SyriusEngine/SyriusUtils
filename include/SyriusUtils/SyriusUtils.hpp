@@ -5,6 +5,7 @@
 #include <SyriusUtils/PlatformDetection.hpp>
 #include <SyriusUtils/ResourceView.hpp>
 #include <SyriusUtils/Math.hpp>
+#include <SyriusUtils/SyriusEnum.hpp>
 
 #include <SyriusUtils/Types/Types.hpp>
 #include <SyriusUtils/Types/SymbolicTypes.hpp>
