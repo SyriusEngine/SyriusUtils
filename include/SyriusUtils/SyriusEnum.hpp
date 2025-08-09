@@ -173,13 +173,16 @@ namespace Syrius::Detail {
             Name##_StructuresGenerated = true; \
         } \
     } \
-    inline std::string Name##_ToString(Name value){ \
+    inline std::string toString(Name value){ \
         if (!Name##_detail::Name##_StructuresGenerated){ \
             Name##_detail::generateStructures(); \
         } \
         return Name##_detail::SR_ENUM_MAP_VALUE_TO_STR.at(value); \
     } \
-    inline Name Name##_FromString(const std::string& value){ \
+    inline Name fromString(const std::string& value){ \
+        if (!Name##_detail::Name##_StructuresGenerated){ \
+            Name##_detail::generateStructures(); \
+        } \
         auto it = Name##_detail::SR_ENUM_MAP_STR_TO_VALUE.find(value); \
         if (it == Name##_detail::SR_ENUM_MAP_STR_TO_VALUE.end()){ \
             const std::string msg = "Cannot convert: " + value + " to enum of type: " + std::string(#Name); \
