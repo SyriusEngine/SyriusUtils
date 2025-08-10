@@ -19,25 +19,34 @@
     #define and &&
     #define or ||
 
-#elif defined(__MINGW64__)
-#define SR_COMPILER_MINGW_W64
+    #define SR_FILE __FILE__
+    #define SR_LINE __LINE__
+    #define SR_FUNC __FUNCSIG__
 
-#elif defined(__MINGW32__)
+#elif defined(__MINGW64__)
     #define SR_COMPILER_MINGW_W64
+
+    #define SR_FILE __FILE__
+    #define SR_LINE __LINE__
+    #define SR_FUNC __FUNCTION__
 
 #elif defined(__GNUC__)
     #define SR_COMPILER_GCC
 
+    #define SR_FILE __FILE__
+    #define SR_LINE __LINE__
+    #define SR_FUNC __PRETTY_FUNCTION__
+
 #elif defined(__clang__)
     #define SR_COMPILER_CLANG
+
+    #define SR_FILE __FILE__
+    #define SR_LINE __LINE__
+    #define SR_FUNC __PRETTY_FUNCTION__
 
 #else
     #error "Compiler is not supported"
 #endif
-
-#define SR_FILE __FILE__
-#define SR_LINE __LINE__
-#define SR_FUNC __FUNCTION__
 
 namespace Syrius::Priv{
 

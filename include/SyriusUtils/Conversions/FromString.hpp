@@ -2,14 +2,15 @@
 
 #include <SyriusUtils/Clock/Clock.hpp>
 #include <SyriusUtils/Logger/LoggerMacros.hpp>
+#include <SyriusUtils/SyriusTypeTraits.hpp>
 #include <string>
 
 namespace Syrius {
 
     template<typename T>
     T fromString(const std::string& str) {
-        static_assert(std::string("fromString not supported for type") + typeid(T).name());
-        return T{};
+        SR_STATIC_ASSERT_TYPE(T);
+        return T{}; // prevent -Wreturn
     }
 
     template<>

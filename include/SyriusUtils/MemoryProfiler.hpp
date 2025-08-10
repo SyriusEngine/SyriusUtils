@@ -34,6 +34,14 @@ inline void* operator new(std::size_t size){
     return malloc(size);
 }
 
+inline void operator delete(void* memory) noexcept {
+    if (memory != nullptr) {
+        // can't know size here unless you store it in profiler
+        Syrius::MemoryProfiler::free(0);
+        free(memory);
+    }
+}
+
 inline void operator delete(void* memory, size_t size) noexcept {
     if (memory != nullptr) {
         Syrius::MemoryProfiler::free(size);
@@ -52,6 +60,5 @@ inline void operator delete[](void* memory, size_t size) noexcept {
         free(memory);
     }
 }
-
 
 #endif

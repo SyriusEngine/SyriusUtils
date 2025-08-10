@@ -34,6 +34,7 @@ set(SYRIUS_UTILS_HEADERS
     include/SyriusUtils/Random.hpp
     include/SyriusUtils/MemoryProfiler.hpp
     include/SyriusUtils/Math.hpp
+    include/SyriusUtils/SyriusTypeTraits.hpp
 
     include/SyriusUtils/DevUtils/MacroExpansion.hpp
     include/SyriusUtils/DevUtils/TestingMacros.hpp
