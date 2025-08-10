@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SyriusUtils/DevUtils/MacroExpansion.hpp>
+#include <fmt/format.h>
 #include <string>
 #include <stdexcept>
 #include <unordered_map>
@@ -146,6 +147,12 @@ namespace Syrius::Detail {
 #define SR_ENUM_MAP_VALUE_TO_STR _ValueToStr
 #define SR_ENUM_MAP_STR_TO_VALUE _StrToValue
 
+/**
+ * @brief Macro to generate an enum with fromString and toString function. This code is heavily inspired by
+ *        BETTER_ENUM.
+ * @param Name
+ * @param Type
+ */
 #define SR_ENUM(Name, Type, ...) \
     typedef enum Name: Type { \
         SR_ENUM_ID(SR_ENUM_PP_MAP(SR_ENUM_ADD_ENTRY, Name, __VA_ARGS__)) \
@@ -189,4 +196,15 @@ namespace Syrius::Detail {
             throw std::runtime_error(msg); \
         } \
         return it->second; \
-    }
+    } \
+    template<> \
+    struct fmt::formatter<Name>{\
+        constexpr auto parse(fmt::format_parse_context& ctx) -> decltype(ctx.begin()) { \
+            return ctx.begin(); \
+        } \
+        template <typename FormatContext> \
+        auto format(const Name value, FormatContext& ctx) const -> decltype(ctx.out()) { \
+            return fmt::format_to(ctx.out(), "{}", toString(value)); \
+        } \
+    };
+

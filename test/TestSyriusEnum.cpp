@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <SyriusUtils/SyriusEnum.hpp>
+#include <SyriusUtils/Logger/LoggerMacros.hpp>
 
 class TestSyriusEnum: public ::testing::Test {
 };
@@ -27,6 +28,11 @@ TEST_F(TestSyriusEnum, StringToEnum) {
     EXPECT_EQ(fromString("SR_FRUIT_CHERRY"), SR_FRUIT_CHERRY);
     EXPECT_EQ(fromString("SR_FRUIT_ORANGE"), SR_FRUIT_ORANGE);
     EXPECT_THROW(fromString("NON_EXISTENT_VALUE< "), std::runtime_error);
+}
+
+TEST_F(TestSyriusEnum, FMTLogEnum) {
+    SR_FRUIT_TYPE myType = SR_FRUIT_APPLE;
+     SR_LOG_INFO("TestSyriusEnum", "This is myType: {}", myType);
 }
 
 
